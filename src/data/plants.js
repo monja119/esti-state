@@ -1,4 +1,4 @@
-import plantImage from "../assets/images/logo_sanifer.png";
+import plantImage from "../assets/images/monstera.jpeg";
 
 export const plants = [
     {
