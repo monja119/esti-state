@@ -1,6 +1,6 @@
 
 
-export default function CardsPlants({ plantsList }) {
+export default function CardsPlants({ plantsList, likePlant }) {
     return (
        <>
             {plantsList.map((plant, key) => (
@@ -10,10 +10,12 @@ export default function CardsPlants({ plantsList }) {
                   <div className="card-body">
                     <h5 className="card-title">{plant?.name}</h5>
                     <p className="card-text">
-                      <strong>Lumière:</strong> {plant?.lumiere}
+                      <i className={`text-warning fas fa-thumbs-${plant?.reaction === 'like' ? 'up' : 'down'}`}></i>
                     </p>
                     <p className="card-text">
-                      <strong>Eau:</strong> {plant?.eau}
+                      <button 
+                        onClick={() => likePlant(plant.id)}
+                      className="btn btn-primary form-control">{plant?.reaction === 'like' ? "Je n'aime pas" : "J'aime"}</button>
                     </p>
                   </div>
                 </div>

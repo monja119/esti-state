@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CardsPlants from "../../components/CardPlant";
 import { plants } from "../../data/plants";
 
 export default function Home () {
-    const [search, setSearch] = useState("");
     const [filters, setFilters] = useState([]);
     const [plantsList, setPlantsList] = useState(plants);
 
@@ -19,7 +18,9 @@ export default function Home () {
       
       if (filters.includes(value)) {
         const new_filters = filters.filter((filter) => filter !== value);
-        const new_plants = plants.filter((plant) => new_filters.includes(plant.category));
+        console.log(new_filters)
+        const new_plants =  new_filters.length > 0 ? plants.filter((plant) => new_filters.includes(plant.category)) : plants;
+
         setFilters(new_filters);
         setPlantsList(new_plants);
       } else {
@@ -30,9 +31,19 @@ export default function Home () {
       }
     }
 
-    useEffect(() => {
-      console.log(filters)
-    }, [filters])
+    const likePlant = (id) => {
+      const new_plants = plantsList.map((plant) => {
+        if (plant.id === id) {
+          
+          return {
+            ...plant,
+            reaction: plant.reaction === 'like' ? 'dislike' : 'like'
+          }
+        }
+        return plant;
+      });
+      setPlantsList(new_plants);
+    }
    
     return (
       <div className="container-fluid">
@@ -81,7 +92,7 @@ export default function Home () {
         </div>
 
         <div className="row mt-3">
-            <CardsPlants plantsList={plantsList} />
+            <CardsPlants plantsList={plantsList} likePlant={likePlant} />
         </div>
       </div>
     );

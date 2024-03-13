@@ -6,39 +6,34 @@ export const plants = [
       name: "Dahlia",
       category: "classique",
       image: plantImage,
-      lumiere: 2,
-      eau: 3
+      reaction : 'dislike'
     },
     {
       id: 2,
       name: "Rose",
       category: "exterieure",
       image: plantImage,
-      lumiere: 3,
-      eau: 1
+      reaction : 'like'
     },
     {
       id: 3,
       name: "Vanille",
       category: "classique",
       image: plantImage,
-      lumiere: 1,
-      eau: 2
+      reaction : 'dislike'
     },
     {
       id: 4,
       name: "Inc",
       category: "exterieure",
       image: plantImage,
-      lumiere: 2,
-      eau: 2
+      reaction : 'like'
     },
     {
       id: 5,
       name: "Tournesol",
       category: "plante_grasse",
       image: plantImage,
-      lumiere: 2,
-      eau: 2
+      reaction : 'dislike'
     },
   ];
